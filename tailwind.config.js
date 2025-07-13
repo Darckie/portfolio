@@ -8,8 +8,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        terminal: '#00FF41',
+        bgDark: '#0f0f0f',
+        cream: {
+          100: '#fdf6ee',
+          200: '#f7e9d7',
+        },
+      },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', 'sans-serif'],
+        mono: ['Fira Code', 'monospace'],
+        serif: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },

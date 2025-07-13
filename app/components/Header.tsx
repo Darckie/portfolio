@@ -3,43 +3,46 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 
-const Header = () => {
+const Header = ({ onNavigate }: { onNavigate?: (page: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
+  const currentTime = new Date().toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  })
+
   return (
-    <header className="w-full px-6 py-4 bg-white shadow-md dark:bg-black dark:text-white">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo / Title */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          Kunwar<span className="text-blue-600">Dev</span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6">
-          <Link href="#about" className="hover:text-blue-500 transition">About</Link>
-          <Link href="#projects" className="hover:text-blue-500 transition">Projects</Link>
-          <Link href="#contact" className="hover:text-blue-500 transition">Contact</Link>
-        </nav>
-
-        {/* Mobile Toggle */}
-        <button onClick={toggleMenu} className="md:hidden">
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden mt-4 space-y-2 px-2">
-          <Link href="#about" className="block py-2 border-b hover:text-blue-500">About</Link>
-          <Link href="#projects" className="block py-2 border-b hover:text-blue-500">Projects</Link>
-          <Link href="#contact" className="block py-2 hover:text-blue-500">Contact</Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-xl border-b border-cyan-500/20">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="cyber-font text-2xl font-black text-black">
+            <span className="text-cyan-500">KB</span>
+            <span className="text-purple-500">.</span>
+            <span className="text-pink-500">DEV</span>
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="mono-font text-sm text-gray-600">
+              {currentTime}
+            </div>
+            {['HOME', 'ABOUT', 'PROJECTS', 'CONTACT'].map((item) => (
+              <button
+                key={item}
+                onClick={() => onNavigate && onNavigate(item.toLowerCase())}
+                className="text-black hover:text-cyan-500 transition-colors duration-300 relative group font-mono"
+              >
+                {item}
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:w-full transition-all duration-300" />
+              </button>
+            ))}
+          </div>
         </div>
-      )}
-    </header>
+      </div>
+    </nav>
   )
 }
 

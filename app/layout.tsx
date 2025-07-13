@@ -20,9 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${spaceGrotesk.variable} font-sans bg-white dark:bg-black text-black dark:text-white transition-colors`}>
        
-       <Header/>
+       {/* <Header/> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   );
