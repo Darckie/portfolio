@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
+import Interest from '../interest/InterestPanel'
+
 export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
@@ -9,20 +11,6 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
 
     useEffect(() => {
         setIsLoaded(true);
-
-        // Update time every second
-        const updateTime = () => {
-            const now = new Date();
-            setCurrentTime(now.toLocaleTimeString('en-US', {
-                hour12: false,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            }));
-        };
-        updateTime();
-        const timeInterval = setInterval(updateTime, 1000);
-
         const handleMouseMove = (e: MouseEvent) => {
             const rect = containerRef.current?.getBoundingClientRect();
             if (rect) {
@@ -37,46 +25,40 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
-            clearInterval(timeInterval);
+
         };
     }, []);
 
+    // Real experience
     const experiences = [
         {
-            year: '2024',
-            title: 'SENIOR FULL-STACK DEVELOPER',
-            company: 'TECH CORP',
-            description: 'Leading development of enterprise-scale applications with React, Node.js, and cloud technologies.',
-            tech: ['React', 'Node.js', 'AWS', 'MongoDB', 'TypeScript']
-        },
-        {
-            year: '2023',
-            title: 'FULL-STACK DEVELOPER',
-            company: 'INNOVATION LABS',
-            description: 'Built scalable web applications and microservices architecture for high-traffic platforms.',
-            tech: ['Next.js', 'Express.js', 'PostgreSQL', 'Redis', 'Docker']
-        },
-        {
-            year: '2022',
-            title: 'FRONTEND DEVELOPER',
-            company: 'DIGITAL AGENCY',
-            description: 'Created responsive and interactive user interfaces for various client projects.',
-            tech: ['React', 'Vue.js', 'Sass', 'Webpack', 'Jest']
+            year: '2023–Present',
+            title: 'Mid-Senior Frontend Developer',
+            company: 'Technical Offerings & System Solutions Pvt Ltd. (TOSS)',
+            description: 'Working as a mid-senior developer focused on creating and maintaining business applications. My main tasks include building interactive dashboards for data visualization, developing CRM systems for customer management, and creating user portals for different business needs. I work with React.js, Redux, and other modern frontend tools to build responsive and user-friendly interfaces. I also help with backend development using Node.js, Java, and MySQL when needed. I collaborate with team members to plan features, review code, and ensure high-quality deliverables.',
+            tech: ['React.js', 'Redux', 'Node.js', 'Java', 'Tailwind CSS', 'TypeScript', 'MySQL']
         }
     ];
 
+    // Real education
     const education = [
         {
-            degree: 'BACHELOR OF TECHNOLOGY',
-            institution: 'COMPUTER SCIENCE',
-            year: '2022',
-            description: 'Specialized in software engineering and web development technologies.'
+            degree: 'Master of Computer Applications (MCA)',
+            institution: 'H.N.B.G.U Srinagar',
+            year: '2023',
+            description: 'CGPA: 7.4'
         },
         {
-            degree: 'CERTIFICATION',
-            institution: 'AWS DEVELOPER',
-            year: '2023',
-            description: 'Certified in cloud development and deployment practices.'
+            degree: 'Bachelor of Science (B.Sc)',
+            institution: 'P.G.C Gopeshwer',
+            year: '2021',
+            description: 'CGPA: 6.4'
+        },
+        {
+            degree: '12th Grade',
+            institution: 'GIC Kansuwa',
+            year: '2017',
+            description: 'Percentage: 72%'
         }
     ];
 
@@ -147,46 +129,17 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
             </div>
 
             {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-xl border-b border-cyan-500/20">
-                <div className="max-w-7xl mx-auto px-6 py-4">
-                    <div className="flex items-center justify-between">
-                        <div className="cyber-font text-2xl font-black text-black">
-                            <span className="text-cyan-500">KB</span>
-                            <span className="text-purple-500">.</span>
-                            <span className="text-pink-500">DEV</span>
-                        </div>
-                        <div className="hidden md:flex items-center space-x-8">
-                            <div className="mono-font text-sm text-gray-600">
-                                {currentTime}
-                            </div>
-                            {['HOME', 'ABOUT', 'PROJECTS', 'CONTACT'].map((item) => (
-                                <button
-                                    key={item}
-                                    onClick={() => onNavigate && onNavigate(item.toLowerCase())}
-                                    className={`tech-font transition-colors duration-300 relative group font-semibold ${
-                                        item === 'ABOUT' ? 'text-cyan-500' : 'text-black hover:text-cyan-500'
-                                    }`}
-                                >
-                                    {item}
-                                    <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-300 ${
-                                        item === 'ABOUT' ? 'w-full' : 'w-0 group-hover:w-full'
-                                    }`} />
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </nav>
+
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6">
+            <section className="relative pt-32 pb-15 px-6">
                 <div className={`max-w-7xl mx-auto transform transition-all duration-2000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    
+
                     {/* Page Title */}
-                    <div className="text-center mb-20">
-                        <h1 className="cyber-font text-6xl md:text-7xl font-black text-black mb-6">
-                            ABOUT <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">PROTOCOL</span>
-                        </h1>
+                    <div className="text-center mb-10">
+                        <h2 className="cyber-font text-3xl md:text-5xl font-black text-black mb-4">
+                            ABOUT <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">ME</span>
+                        </h2>
                         <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
                     </div>
 
@@ -194,7 +147,7 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
                         {/* Profile Section */}
                         <div className="relative">
-                            <div className="bg-white/80 backdrop-blur-xl border-2 border-gray-200 p-8 rounded-lg shadow-2xl">
+                            <div className="bg-white/80 backdrop-blur-xl border-gray-300 border-r-2 p-8 ">
                                 <div className="flex items-center space-x-6 mb-8">
                                     <div className="relative">
                                         <Image
@@ -207,52 +160,51 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
                                         <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
                                     </div>
                                     <div>
-                                        <h2 className="cyber-font text-2xl font-bold text-black">KUNWAR BRIJESH</h2>
-                                        <p className="tech-font text-gray-600 font-medium">FULL-STACK DEVELOPER</p>
-                                        <p className="mono-font text-sm text-cyan-500">ID: KB-2024-001</p>
+                                        <h2 className="cyber-font text-2xl font-bold text-black">Brijesh Kunwar</h2>
+                                        <p className="tech-font text-gray-600 font-medium">React Developer / Frontend Engineer</p>
+                                        <p className="mono-font text-sm text-cyan-500">Introvert</p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="space-y-4">
                                     <p className="tech-font text-gray-700 leading-relaxed">
-                                        Passionate full-stack developer with expertise in modern web technologies. 
-                                        Specialized in building scalable applications with cutting-edge frameworks 
-                                        and cloud-native architectures.
+                                        Frontend Developer with 2 years of experience building scalable, dynamic applications using React.js. Specialized in creating optimized UI/UX, managing state, and integrating with backend services. I also have decent knowledge of backend development with Node.js, Express.js, and MySQL. Passionate about delivering clean, user-centric solutions and currently seeking frontend roles where I can contribute to impactful web applications.
                                     </p>
                                     <p className="tech-font text-gray-700 leading-relaxed">
-                                        Committed to writing clean, maintainable code and staying updated with 
-                                        the latest industry trends and best practices.
+                                        Committed to writing clean, maintainable code and staying updated with the latest industry trends and best practices. Enthusiast of poetry, sketching, and fingerstyle guitar. Passionate about reading, kickboxing, and creative expression.
                                     </p>
                                 </div>
 
                                 {/* Quick Stats */}
                                 <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-200">
                                     <div className="text-center">
-                                        <div className="cyber-font text-2xl font-bold text-cyan-500">3+</div>
+                                        <div className="cyber-font text-2xl font-bold text-cyan-500">2</div>
                                         <div className="tech-font text-sm text-gray-600">Years Experience</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="cyber-font text-2xl font-bold text-purple-500">50+</div>
-                                        <div className="tech-font text-sm text-gray-600">Projects Completed</div>
+                                        <div className="cyber-font text-2xl font-bold text-purple-500">30+</div>
+                                        <div className="tech-font text-sm text-gray-600">Projects</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="cyber-font text-2xl font-bold text-pink-500">15+</div>
+                                        <div className="cyber-font text-2xl font-bold text-pink-500">13+</div>
                                         <div className="tech-font text-sm text-gray-600">Technologies</div>
                                     </div>
                                 </div>
+
+
+
                             </div>
                         </div>
 
                         {/* Skills Grid */}
                         <div className="space-y-6">
-                            <h3 className="cyber-font text-3xl font-bold text-black mb-6">CORE COMPETENCIES</h3>
-                            
+                            <h3 className="cyber-font text-2xl font-bold text-black mb-6">Skills</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { name: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
-                                    { name: 'Backend', skills: ['Node.js', 'Express', 'Python', 'Java'] },
-                                    { name: 'Database', skills: ['MongoDB', 'PostgreSQL', 'Redis', 'MySQL'] },
-                                    { name: 'DevOps', skills: ['Docker', 'AWS', 'CI/CD', 'Kubernetes'] }
+                                    { name: 'Frontend', skills: ['React.js', 'Next.js', 'JavaScript/TypeScript', 'Redux', 'Tailwind CSS', 'Material-UI', 'HTML5/CSS3'] },
+                                    { name: 'Backend', skills: ['Node.js', 'Express.js', 'Java', 'Sequelize', 'JWT', 'Next.js'] },
+                                    { name: 'Database', skills: ['MySQL', 'MongoDB'] },
+                                    { name: 'Tools', skills: ['Git', 'GitHub', 'Postman'] }
                                 ].map((category) => (
                                     <div key={category.name} className="bg-white/60 backdrop-blur-sm border border-gray-200 p-4 rounded-lg hover:border-cyan-500/50 transition-all duration-300">
                                         <h4 className="cyber-font text-lg font-bold text-black mb-3">{category.name}</h4>
@@ -271,13 +223,13 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
 
                     {/* Experience Section */}
                     <section className="mb-20">
-                        <h2 className="cyber-font text-4xl font-bold text-black text-center mb-12">
-                            MISSION <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">LOG</span>
+                        <h2 className="cyber-font text-2xl font-bold text-black text-center mb-12">
+                            Experience
                         </h2>
-                        
+
                         <div className="space-y-8">
                             {experiences.map((exp, index) => (
-                                <div key={index} className="relative bg-white/80 backdrop-blur-xl border-2 border-gray-200 p-8 rounded-lg shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                                <div key={index} className="relative  backdrop-blur-xl border-2 bg-gray-50 border-gray-100 p-8 rounded-lg  hover:border-cyan-200/50 transition-all duration-300">
                                     <div className="flex items-start justify-between mb-4">
                                         <div>
                                             <h3 className="cyber-font text-2xl font-bold text-black">{exp.title}</h3>
@@ -285,9 +237,9 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
                                         </div>
                                         <div className="mono-font text-lg text-cyan-500 font-bold">{exp.year}</div>
                                     </div>
-                                    
+
                                     <p className="tech-font text-gray-700 mb-4 leading-relaxed">{exp.description}</p>
-                                    
+
                                     <div className="flex flex-wrap gap-2">
                                         {exp.tech.map((tech) => (
                                             <span key={tech} className="mono-font px-3 py-1 bg-cyan-500/10 text-cyan-700 text-sm font-medium border border-cyan-500/20 rounded">
@@ -301,35 +253,54 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
                     </section>
 
                     {/* Education Section */}
-                    <section className="mb-20">
-                        <h2 className="cyber-font text-4xl font-bold text-black text-center mb-12">
-                            TRAINING <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">PROTOCOLS</span>
-                        </h2>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {education.map((edu, index) => (
-                                <div key={index} className="bg-white/80 backdrop-blur-xl border-2 border-gray-200 p-8 rounded-lg shadow-xl hover:border-purple-500/50 transition-all duration-300">
-                                    <div className="flex items-center justify-between mb-4">
-                                        <h3 className="cyber-font text-xl font-bold text-black">{edu.degree}</h3>
-                                        <span className="mono-font text-lg text-purple-500 font-bold">{edu.year}</span>
-                                    </div>
-                                    <p className="tech-font text-lg text-purple-500 font-semibold mb-3">{edu.institution}</p>
-                                    <p className="tech-font text-gray-700 leading-relaxed">{edu.description}</p>
-                                </div>
-                            ))}
+
+
+
+
+
+                    <section className="mb-12">
+                        <div className="max-w mx-auto">
+                            <h2 className="cyber-font text-2xl font-bold text-black text-center mb-12">
+                                Education
+                            </h2>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                {education.map((edu, index) => (
+                                    <button
+                                        key={index}
+
+                                        className={`py-4 px-6 bg-pink-50 rounded-lg border-2 transition-all duration-200 hover:scale-105 text-left`}
+                              >
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="text-sm m-0">🎓</div>
+                                            <span className={`mono-font text-sm font-medium ${true ? 'text-gray-800' : 'text-purple-500'
+                                                }`}>
+                                                {edu.year}
+                                            </span>
+                                            
+                                        </div>
+                                        <h3 className="system-font font-semibold text-md mb-3">{edu.degree}</h3>
+                                        <p className={`tech-font text-sm ${true ? 'text-gray-800' : 'text-purple-500'
+                                            }`}>
+                                            {edu.institution} / <span className="font-bold text-blue-900">{edu.description}</span>
+                                        </p>
+                                        
+                                    </button>
+                                ))}
+                            </div>
+
                         </div>
+
+
+
+
                     </section>
 
-                    {/* Back to Home Button */}
-                    <div className="text-center">
-                        <button 
-                            onClick={() => onNavigate && onNavigate('home')}
-                            className="group relative px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-500 text-white tech-font font-bold text-xl rounded-none border-2 border-cyan-500 overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/50"
-                        >
-                            <span className="relative z-10">RETURN TO HOME</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                        </button>
-                    </div>
+                    {/* Interests Section */}
+                    <Interest />
+
+
+
                 </div>
             </section>
         </div>

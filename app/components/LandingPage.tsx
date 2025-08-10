@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Header from './Header';
+import { Hand } from 'lucide-react';
+
 
 export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page: string) => void }) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -57,40 +58,53 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
         };
     }, []);
 
+    // Update skills to match revised resume and user feedback
     const skills = [
-        { name: 'REACT.JS', level: 98, color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
-        { name: 'NODE.JS', level: 95, color: 'from-green-400 to-emerald-500', icon: '⚡' },
-        { name: 'MONGODB', level: 92, color: 'from-green-500 to-teal-500', icon: '🍃' },
-        { name: 'NEXT.JS', level: 96, color: 'from-gray-400 to-gray-600', icon: '▲' },
-        { name: 'TYPESCRIPT', level: 94, color: 'from-blue-400 to-indigo-500', icon: '📘' },
-        { name: 'TAILWIND', level: 97, color: 'from-teal-400 to-cyan-500', icon: '🎨' }
+        { name: 'REACT.JS', level: 90, color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
+        { name: 'JAVASCRIPT', level: 90, color: 'from-yellow-400 to-yellow-500', icon: '📜' },
+        { name: 'HTML5/CSS3', level: 90, color: 'from-orange-400 to-pink-500', icon: '🌐' },
+        { name: 'REDUX', level: 70, color: 'from-purple-400 to-indigo-500', icon: '🔄' },
+        { name: 'TAILWIND CSS', level: 70, color: 'from-teal-400 to-cyan-500', icon: '🎨' },
+        { name: 'TYPESCRIPT', level: 60, color: 'from-blue-400 to-indigo-400', icon: '📘' },
+        { name: 'NEXT.JS', level: 40, color: 'from-gray-400 to-gray-600', icon: '▲' },
+        { name: 'React Native', level: 40, color: 'from-gray-400 to-teal-600', icon: '📱' },
+        // { name: 'MATERIAL-UI', level: 80, color: 'from-blue-400 to-indigo-500', icon: '🖌️' },
+        { name: 'GIT & GITHUB', level: 85, color: 'from-gray-700 to-black', icon: '🔗' },
+
+        { name: 'NODE.JS', level: 70, color: 'from-green-400 to-emerald-500', icon: '⚡' },
+        { name: 'EXPRESS.JS', level: 75, color: 'from-gray-400 to-gray-600', icon: '🚀' },
+        { name: 'MYSQL', level: 50, color: 'from-blue-500 to-blue-700', icon: '🗄️' },
+
+        { name: 'MONGODB', level: 40, color: 'from-green-500 to-teal-500', icon: '🍃' },
     ];
 
+    // Update projects to match revised resume and user feedback
     const projects = [
         {
-            title: 'NEURAL COMMERCE',
-            description: 'AI-powered e-commerce platform with real-time analytics and predictive recommendations',
-            tech: ['React', 'Node.js', 'TensorFlow', 'MongoDB'],
-            gradient: 'from-purple-500 via-pink-500 to-red-500',
-            status: 'LIVE',
-            year: '2024'
-        },
-        {
-            title: 'QUANTUM DASHBOARD',
-            description: 'Advanced data visualization platform with 3D charts and real-time streaming',
-            tech: ['Next.js', 'Three.js', 'WebSocket', 'D3.js'],
+            title: 'Maharashtra Cyber Complaints Portal',
+            description: 'A government-deployed complaint management system helping curb online fraud across Maharashtra. Real-time monitoring, advanced search, and data visualization dashboards.',
+            tech: ['React.js', 'Redux', 'Crypto.js', 'MySQL', 'Java', 'JWT'],
             gradient: 'from-blue-500 via-cyan-500 to-teal-500',
-            status: 'BETA',
-            year: '2024'
+            status: 'LIVE',
+            year: '2023-Present'
         },
         {
-            title: 'CRYPTO NEXUS',
-            description: 'Decentralized trading platform with advanced portfolio management',
-            tech: ['React', 'Web3.js', 'Solidity', 'GraphQL'],
-            gradient: 'from-yellow-400 via-orange-500 to-red-500',
-            status: 'DEV',
-            year: '2024'
+            title: 'ACEHELPLINE (Emergency Call Management)',
+            description: 'A modern emergency call management and dispatcher system for real-time incident tracking, call history, and ambulance dispatch. Features include tabbed navigation, call/incident history, and advanced search, built with React, MUI, and DataGrid.',
+            tech: ['React.js', 'MUI', 'Tailwind', 'TypeScript', 'Java', 'MySQL'],
+            gradient: 'from-purple-500 via-blue-500 to-cyan-500',
+            status: 'LIVE',
+            year: '2025-Present'
+        },
+        {
+            title: 'WhatsApp Business API-Based Messaging & Msg Portal',
+            description: 'Custom solution to automate customer engagement for small businesses. Real-time, two-way messaging, role-based access, dashboard, and automated responses.',
+            tech: ['Node.js', 'Express.js', 'React.js', 'Java'],
+            gradient: 'from-green-400 via-teal-400 to-blue-400',
+            status: 'LIVE',
+            year: '2023'
         }
+
     ];
 
     return (
@@ -222,9 +236,9 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
             </div>
 
             {/* Navigation */}
-           
 
-            <Header onNavigate={onNavigate} />
+
+
 
             {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
@@ -262,10 +276,10 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                                     {/* Profile Image */}
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <Image
-                                            src="/images/vinsmokeSanji.jpeg"
+                                            src="/images/sanji.jpg"
                                             alt="Kunwar Brijesh"
-                                            width={256}
-                                            height={256}
+                                            width={306}
+                                            height={306}
                                             className="w-full h-full object-cover rounded-full"
                                         />
                                     </div>
@@ -285,7 +299,7 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                             <div className="mt-16 text-center">
                                 <div className="inline-flex items-center space-x-3 px-6 py-3 bg-white/90 backdrop-blur-sm border border-amber-200 rounded-full shadow-lg">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-sm font-medium text-amber-800">Available for Projects</span>
+                                    <span className="text-sm flex align-center font-medium text-amber-800">Hi I'm Brijesh !<Hand className="w-4 h-4 ml-2 text-amber-800" /></span>
                                 </div>
                             </div>
 
@@ -300,50 +314,66 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
 
                     {/* Main Title */}
                     <div className="mb-8 overflow-hidden">
-                        <h1 className={`cyber-font text-5xl md:text-6xl font-black tracking-tight text-black ${glitchActive ? 'glitch' : ''
-                            }`} data-text="KUNWAR">
-                            KUNWAR
+                        <h1 className={`cyber-font text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-2 ${glitchActive ? 'glitch' : ''}`}
+                            data-text="Brijesh Kunwar">
+                            Brijesh Kunwar
                         </h1>
-                        <h1 className="cyber-font text-5xl md:text-6xl font-black tracking-tight -mt-4 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent neon-glow">
-                            BRIJESH
-                        </h1>
+                        <h2 className="cyber-font text-2xl md:text-3xl font-semibold tracking-tight text-cyan-700 mb-4">
+                            Frontend Developer
+                        </h2>
                     </div>
 
                     {/* Role with Typing Effect */}
                     <div className="mb-8 relative">
                         <div className="tech-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                             <span className="text-black">
-                                FULL-STACK DEVELOPER
+                                React Developer
                             </span>
                         </div>
                         <div className="w-48 h-1 mx-auto rounded-full bg-gray-500" />
                     </div>
 
                     {/* Description */}
-                    <p className="tech-font text-2xl md:text-3xl text-gray-700 max-w-4xl mx-auto mb-16 leading-relaxed font-medium">
-                        Building <span className="text-cyan-500 font-bold ">NEXT-GEN</span> digital experiences with
-                        <span className="text-purple-500 font-bold "> CUTTING-EDGE</span> technology and
-                        <span className="text-pink-500 font-bold "> FUTURISTIC</span> design
+                    <p className="tech-font text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
+                        Frontend Developer with 2 years of experience building scalable, dynamic applications using React.js. Specialized in creating optimized UI/UX, managing state, and integrating with backend services. I also have good knowledge of backend development with Node.js, Java, and MySQL. Passionate about delivering clean, user-centric solutions and currently seeking frontend roles where I can contribute to impactful web applications.
                     </p>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
-                        <button className="group relative px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-500 text-white tech-font font-bold text-xl rounded-none border-2 border-cyan-500 overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/50">
-                            <span className="relative z-10">VIEW PROJECTS</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                        </button>
-                        <button className="group relative px-12 py-6 border-2 border-purple-500 text-purple-500 tech-font font-bold text-xl rounded-none overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/50">
-                            <span className="relative z-10 group-hover:text-white transition-colors duration-300">CONTACT ME</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 scale-0 group-hover:scale-100 transition-transform duration-300" />
-                        </button>
-                    </div>
+                    {/* <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
+                        <div className="relative group">
+                            <button
+                                className="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+                            >
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+                                    <div className="relative z-10 flex items-center space-x-2">
+                                        <span className="transition-all duration-500 group-hover:translate-x-1">View Projects</span>
+                                        <svg className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" data-slot="icon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" fillRule="evenodd"></path></svg>
+                                    </div>
+                                </span>
+                            </button>
+                        </div>
+                        <div className="relative group">
+                            <button
+                                className="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+                            >
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+                                    <div className="relative z-10 flex items-center space-x-2">
+                                        <span className="transition-all duration-500 group-hover:translate-x-1">Contact Me</span>
+                                        <svg className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" data-slot="icon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" fillRule="evenodd"></path></svg>
+                                    </div>
+                                </span>
+                            </button>
+                        </div>
+                    </div> */}
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                        {['REACT', 'NODE.JS', 'MONGODB', 'NEXT.JS', 'TYPESCRIPT', 'TAILWIND'].map((tech, index) => (
+                    <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-4">
+                        {['React.js', 'JavaScript', 'TypeScript', 'Redux', 'React-Native', 'Tailwind CSS', 'Material-UI', 'Next.js', 'HTML5', 'CSS3', 'Node.js', 'Java', 'MySQL', 'Git'].map((tech, index) => (
                             <div
                                 key={tech}
-                                className="mono-font px-6 py-3 bg-white/20 backdrop-blur-sm border border-cyan-500/30 text-black font-bold text-sm hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                className="mono-font px-5 py-2 bg-white/20 backdrop-blur-sm border border-cyan-500/30 text-gray-900 font-semibold text-xs rounded hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                                 style={{
                                     animationDelay: `${index * 0.1}s`,
                                     animation: isLoaded ? 'fadeInUp 0.6s ease-out forwards' : 'none'
@@ -360,23 +390,23 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
             <section className="relative py-32 px-6 bg-gray-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20">
-                        <h2 className="cyber-font text-6xl md:text-7xl font-black text-black mb-6">
-                            SYSTEM <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">SPECS</span>
+                        <h2 className="cyber-font text-3xl md:text-5xl font-black text-black mb-6">
+                            TECH <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">SKILLS</span>
                         </h2>
                         <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {skills.map((skill, index) => (
-                            <div key={skill.name} className="group relative bg-white/80 backdrop-blur-xl border-2 border-gray-200 hover:border-cyan-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 p-8">
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                            <div key={skill.name} className="group relative bg-white/80 backdrop-blur-xl border-2 border-gray-200 hover:border-cyan-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 px-8 py-6">
+                                <div className="absolute top-0 left-0 w-full bg-gradient-to-r from-cyan-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-                                <div className="flex items-center justify-between mb-6">
+                                <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center space-x-4">
-                                        <span className="text-3xl">{skill.icon}</span>
-                                        <h3 className="cyber-font text-xl font-bold text-black">{skill.name}</h3>
+                                        <span className="text-2xl">{skill.icon}</span>
+                                        <h3 className="cyber-font text-sm font-bold text-gray-900">{skill.name}</h3>
                                     </div>
-                                    <span className="mono-font text-cyan-500 font-bold text-xl">{skill.level}%</span>
+                                    <span className="mono-font text-cyan-500 font-semi-bold text-md">{skill.level}%</span>
                                 </div>
 
                                 <div className="w-full bg-gray-200 h-3 overflow-hidden mb-4">
@@ -386,8 +416,8 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                                     />
                                 </div>
 
-                                <div className="mono-font text-sm text-gray-600 font-medium">
-                                    PROFICIENCY LEVEL: EXPERT
+                                <div className="mono-font text-xs text-gray-600 font-medium">
+                                    PROFICIENCY LEVEL
                                 </div>
                             </div>
                         ))}
@@ -396,7 +426,7 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
             </section>
 
             {/* Projects Section */}
-            <section className="relative py-32 px-6">
+            {/* <section className="relative py-32 px-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20">
                         <h2 className="cyber-font text-6xl md:text-7xl font-black text-black mb-6">
@@ -434,36 +464,77 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                                         ))}
                                     </div>
 
-                                    <button className="tech-font text-purple-500 hover:text-purple-700 font-bold text-lg transition-colors duration-300 flex items-center space-x-2">
-                                        <span>ACCESS PROJECT</span>
-                                        <span>→</span>
-                                    </button>
+                                    <div className="relative group">
+                                        <button className="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+                                            <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                            <span className="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+                                                <div className="relative z-10 flex items-center space-x-2">
+                                                    <span className="transition-all duration-500 group-hover:translate-x-1 text-xs">Access Project</span>
+                                                    <svg className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" data-slot="icon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" fillRule="evenodd"></path></svg>
+                                                </div>
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Contact Section */}
             <section className="relative py-32 px-6 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="cyber-font text-6xl md:text-7xl font-black text-black mb-8">
-                        INITIALIZE <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">CONNECTION</span>
-                    </h2>
+                    <div className="text-center mb-10">
+                        <h2 className="cyber-font text-3xl md:text-5xl font-black text-black mb-6">
+                            LETS <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">CONNECT</span>
+                        </h2>
+                        <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
+                    </div>
                     <p className="tech-font text-2xl text-gray-700 mb-16 font-medium">
                         Ready to build the future together? Let's create something extraordinary.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-8 justify-center">
-                        <button className="group relative px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-500 text-white tech-font font-bold text-xl border-2 border-cyan-500 overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/50">
-                            <span className="relative z-10">START PROJECT</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                        </button>
-                        <button className="group relative px-12 py-6 border-2 border-purple-500 text-purple-500 tech-font font-bold text-xl overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/50">
-                            <span className="relative z-10 group-hover:text-white transition-colors duration-300">DOWNLOAD RESUME</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 scale-0 group-hover:scale-100 transition-transform duration-300" />
-                        </button>
+                    <div className="flex flex-row flex-wrap gap-4 justify-center items-center mt-8">
+                        <a
+                            href="mailto:brijeshkunwar85@gmail.com"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-200"
+                            title="Email Me"
+                        >
+                            {/* Envelope icon */}
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="M22 6.5 12 13 2 6.5" /></svg>
+                            <span className="text-sm">Email</span>
+                        </a>
+                        <a
+                            href="/brijesh_kunwar_resume.pdf"
+                            download
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-purple-500 text-purple-700 font-semibold bg-white shadow-md hover:bg-purple-50 hover:scale-105 transition-transform duration-200"
+                            title="Download Resume"
+                        >
+                            {/* Document download icon */}
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17v-6m0 6l-3-3m3 3l3-3" /><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M8 2v4m8-4v4" /></svg>
+                            <span className="text-sm">Resume</span>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/brijeshkunwar85/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-blue-500 text-blue-700 font-semibold bg-white shadow-md hover:bg-blue-50 hover:scale-105 transition-transform duration-200"
+                            title="LinkedIn"
+                        >
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z" /></svg>
+                            <span className="text-sm">LinkedIn</span>
+                        </a>
+                        <a
+                            href="https://github.com/Darckie"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border-2 border-gray-800 text-gray-800 font-semibold bg-white shadow-md hover:bg-gray-100 hover:scale-105 transition-transform duration-200"
+                            title="GitHub"
+                        >
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.263.82-.582 0-.288-.012-1.243-.018-2.25-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.404 1.02.005 2.04.137 3 .404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.803 5.625-5.475 5.922.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.698.825.58C20.565 21.796 24 17.297 24 12c0-6.63-5.37-12-12-12z" /></svg>
+                            <span className="text-sm">GitHub</span>
+                        </a>
                     </div>
                 </div>
             </section>
