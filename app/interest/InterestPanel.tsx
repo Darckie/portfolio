@@ -1,9 +1,17 @@
-import { useState } from 'react';
 
+
+'use client'
+import { useMemo, useState } from 'react';
+interface Interest {
+    title: string;
+    icon: string;
+    description: string;
+    color: string;
+}
 export default function InterestsSection() {
-    const [selectedInterest, setSelectedInterest] = useState<any>(null);
+    const [selectedInterest, setSelectedInterest] = useState<Interest | null>(null);
 
-    const interests = [
+    const interests = useMemo(() => [
         {
             title: 'Space Science',
             icon: '🚀',
@@ -40,7 +48,7 @@ export default function InterestsSection() {
             description: 'Books and kickboxing',
             color: 'bg-indigo-500'
         }
-    ];
+    ], []);
 
     return (
         <div className="max-w-4xl mx-auto p-6">
@@ -82,10 +90,10 @@ export default function InterestsSection() {
                 {interests.map((interest, index) => (
                     <button
                         key={index}
-                        onClick={() => setSelectedInterest(selectedInterest === index ? null : index)}
-                        className={`p-6 rounded-lg border-2 transition-all duration-200 hover:scale-105 ${selectedInterest === index
-                                ? `${interest.color} text-white border-transparent shadow-lg`
-                                : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300 shadow-sm'
+                        onClick={() => setSelectedInterest(selectedInterest === interest ? null : interest)}
+                        className={`p-6 rounded-lg border-2 transition-all duration-200 hover:scale-105 ${selectedInterest === interest
+                            ? `${interest.color} text-white border-transparent shadow-lg`
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300 shadow-sm'
                             }`}
                     >
                         <div className="text-3xl mb-2">{interest.icon}</div>
@@ -98,13 +106,13 @@ export default function InterestsSection() {
             {selectedInterest !== null && (
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                     <div className="text-5xl mb-4">
-                        {interests[selectedInterest].icon}
+                        {selectedInterest.icon}
                     </div>
                     <h3 className="text-xl font-bold text-gray-800 mb-2">
-                        {interests[selectedInterest].title}
+                        {selectedInterest.title}
                     </h3>
                     <p className="text-gray-600">
-                        {interests[selectedInterest].description}
+                        {selectedInterest.description}
                     </p>
                 </div>
             )}

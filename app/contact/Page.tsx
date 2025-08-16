@@ -1,8 +1,7 @@
-import { Calligraffitti } from 'next/font/google';
-import Header from '../components/Header';
-import { Phone, PhoneCallIcon } from 'lucide-react';
 
-export default function ContactPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
+import { PhoneCallIcon } from 'lucide-react';
+
+export default function ContactPage() {
   return (
     <main className="min-h-screen  text-white relative"
 
@@ -43,7 +42,7 @@ export default function ContactPage({ onNavigate }: { onNavigate?: (page: string
             <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
           </div>
           <p className="tech-font text-2xl text-gray-700 mb-16 font-medium">
-            Ready to build the future together? Let's create something extraordinary.
+            Ready to build the future together? Let&apos;s create something extraordinary.
           </p>
           <span className='text-gray-600 font-bold flex justify-center gap-1 text-align-center'><PhoneCallIcon />7830372716</span>
           <div className="flex flex-row flex-wrap gap-4 justify-center items-center mt-8">

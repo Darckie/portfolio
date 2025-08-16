@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+
+'use client'
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 export default function ProjectSection() {
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -23,43 +25,43 @@ export default function ProjectSection() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    const projects = [
-         {
-        title: "Clixxo Gateway Management Server",
-        status: "In Progress",
-        year: "2025-Present",
-        tech: ["Node.js", "Express.js", "Sequelize", "MySQL", "JWT", "Winston", "Linux"],
-        description: "A robust backend server for managing network gateway devices, user authentication, SIP registration, and high-availability configurations. Provides RESTful APIs for system/network management, diagnostics, and secure user access.",
-        myRole: "Backend Developer",
-        duration: "3 months - Present",
-        learnings: [
-            "Designing secure REST APIs with JWT-based authentication",
-            "Implementing role-based access and middleware in Express.js",
-            "Database modeling and optimization with Sequelize and MySQL",
-            "System-level scripting for network diagnostics (ping, traceroute) via Node.js",
-            "Advanced logging and error handling using Winston",
-            "Managing environment configurations and secure credential storage"
-        ],
-        challenges: [
-            "Ensuring secure access to system-level network operations",
-            "Integrating real-time diagnostics with asynchronous Node.js processes",
-            "Maintaining high availability and failover mechanisms",
-            "Implementing robust logging and monitoring for production environments",
-            "Coordinating database migrations and schema updates with minimal downtime"
-        ],
-        outcomes: [
-            "Deployed on production gateways for real-time network management",
-            "Enabled secure multi-user access with JWT authentication",
-            "Streamlined diagnostics and troubleshooting for network admins",
-            "Reduced manual intervention through automated system APIs",
-            "Established a scalable backend foundation for future gateway features"
-        ]
-    },
-    {
-        title: "Maharashtra Cyber Complaints Portal",
-        status: "LIVE",
-        year: "2023-Present",
-        tech: ["React.js", "Redux", "Crypto.js", "MySQL", "Java", "JWT"],
+    const projects = useMemo(() => [
+        {
+            title: "Clixxo Gateway Management Server",
+            status: "In Progress",
+            year: "2025-Present",
+            tech: ["Node.js", "Express.js", "Sequelize", "MySQL", "JWT", "Winston", "Linux"],
+            description: "A robust backend server for managing network gateway devices, user authentication, SIP registration, and high-availability configurations. Provides RESTful APIs for system/network management, diagnostics, and secure user access.",
+            myRole: "Backend Developer",
+            duration: "3 months - Present",
+            learnings: [
+                "Designing secure REST APIs with JWT-based authentication",
+                "Implementing role-based access and middleware in Express.js",
+                "Database modeling and optimization with Sequelize and MySQL",
+                "System-level scripting for network diagnostics (ping, traceroute) via Node.js",
+                "Advanced logging and error handling using Winston",
+                "Managing environment configurations and secure credential storage"
+            ],
+            challenges: [
+                "Ensuring secure access to system-level network operations",
+                "Integrating real-time diagnostics with asynchronous Node.js processes",
+                "Maintaining high availability and failover mechanisms",
+                "Implementing robust logging and monitoring for production environments",
+                "Coordinating database migrations and schema updates with minimal downtime"
+            ],
+            outcomes: [
+                "Deployed on production gateways for real-time network management",
+                "Enabled secure multi-user access with JWT authentication",
+                "Streamlined diagnostics and troubleshooting for network admins",
+                "Reduced manual intervention through automated system APIs",
+                "Established a scalable backend foundation for future gateway features"
+            ]
+        },
+        {
+            title: "Maharashtra Cyber Complaints Portal",
+            status: "LIVE",
+            year: "2023-Present",
+            tech: ["React.js", "Redux", "Crypto.js", "MySQL", "Java", "JWT"],
             description: "A government-deployed complaint management system helping curb online fraud across Maharashtra. Real-time monitoring, advanced search, and data visualization dashboards.",
             myRole: "Frontend Lead Developer",
             duration: "Ongoing (2+ years)",
@@ -148,9 +150,9 @@ export default function ProjectSection() {
                 "Created reusable messaging framework for future projects"
             ]
         }
-    ];
+    ], []);
 
-    const handleProjectSelect = (index:number) => {
+    const handleProjectSelect = (index: number) => {
         setSelectedProject(index);
         setActiveStep(0);
     };
@@ -164,10 +166,10 @@ export default function ProjectSection() {
 
     const renderStepContent = () => {
         if (selectedProject === null) return null;
-        
+
         const project = projects[selectedProject];
-        
-        switch(activeStep) {
+
+        switch (activeStep) {
             case 0:
                 return (
                     <div className="space-y-6">
@@ -296,7 +298,7 @@ export default function ProjectSection() {
             {/* Hero Section */}
             <section className="relative pt-32 pb-15 px-6">
                 <div className={`max-w-7xl mx-auto transform transition-all duration-2000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    
+
                     {/* Page Title */}
                     <div className="text-center mb-8">
                         <h2 className="cyber-font text-3xl md:text-5xl font-black text-black mb-6">
@@ -311,22 +313,20 @@ export default function ProjectSection() {
                             <div
                                 key={index}
                                 onClick={() => handleProjectSelect(index)}
-                                className={`group relative bg-white/80 backdrop-blur-xl border-2 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl p-8 overflow-hidden cursor-pointer ${
-                                    selectedProject === index 
-                                        ? 'border-purple-500/50 shadow-2xl shadow-purple-500/20' 
+                                className={`group relative bg-white/80 backdrop-blur-xl border-2 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl p-8 overflow-hidden cursor-pointer ${selectedProject === index
+                                        ? 'border-purple-500/50 shadow-2xl shadow-purple-500/20'
                                         : 'border-gray-200 hover:border-purple-500/50 hover:shadow-purple-500/20'
-                                }`}
+                                    }`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
 
                                 <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center space-x-4">
-                                            <div className={`px-3 py-1 rounded-full text-xs font-bold mono-font ${
-                                                project.status === 'LIVE' ? 'bg-green-500 text-white' :
-                                                project.status === 'BETA' ? 'bg-yellow-500 text-black' :
-                                                'bg-purple-500 text-white'
-                                            }`}>
+                                            <div className={`px-3 py-1 rounded-full text-xs font-bold mono-font ${project.status === 'LIVE' ? 'bg-green-500 text-white' :
+                                                    project.status === 'BETA' ? 'bg-yellow-500 text-black' :
+                                                        'bg-purple-500 text-white'
+                                                }`}>
                                                 {project.status}
                                             </div>
                                             <span className="mono-font text-sm text-gray-500">{project.year}</span>
@@ -375,11 +375,10 @@ export default function ProjectSection() {
                                         <button
                                             key={index}
                                             onClick={() => setActiveStep(index)}
-                                            className={`pb-4 px-2 cyber-font font-medium transition-colors duration-200 ${
-                                                activeStep === index
+                                            className={`pb-4 px-2 cyber-font font-medium transition-colors duration-200 ${activeStep === index
                                                     ? 'text-cyan-500 border-b-2 border-cyan-500'
                                                     : 'text-gray-500 hover:text-gray-700'
-                                            }`}
+                                                }`}
                                         >
                                             <span className="mr-2">{step.icon}</span>
                                             {step.title}

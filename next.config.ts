@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  basePath: '/portfolio',
-  // If you use images, also set assetPrefix:
-  assetPrefix: '/portfolio/',
-  // If you use static export (see below), add:
-  output: 'export',
+const nextConfig: NextConfig = {
+  basePath: "/portfolio",
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
 };
-
 
 export default nextConfig;

@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+'use client'
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 
 import Interest from '../interest/InterestPanel'
 
-export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
+export default function AboutPage() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
-    const [currentTime, setCurrentTime] = useState('');
+    // const [currentTime, setCurrentTime] = useState('');
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
     }, []);
 
     // Real experience
-    const experiences = [
+    const experiences = useMemo(() => [
         {
             year: '2023–Present',
             title: 'Mid-Senior Frontend Developer',
@@ -38,10 +39,10 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
             description: 'Working as a mid-senior developer focused on creating and maintaining business applications. My main tasks include building interactive dashboards for data visualization, developing CRM systems for customer management, and creating user portals for different business needs. I work with React.js, Redux, and other modern frontend tools to build responsive and user-friendly interfaces. I also help with backend development using Node.js, Java, and MySQL when needed. I collaborate with team members to plan features, review code, and ensure high-quality deliverables.',
             tech: ['React.js', 'Redux', 'Node.js', 'Java', 'Tailwind CSS', 'TypeScript', 'MySQL']
         }
-    ];
+    ], []);
 
     // Real education
-    const education = [
+    const education = useMemo(() => [
         {
             degree: 'Master of Computer Applications (MCA)',
             institution: 'H.N.B.G.U Srinagar',
@@ -60,7 +61,7 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
             year: '2017',
             description: 'Percentage: 72%'
         }
-    ];
+    ], []);
 
     return (
         <div ref={containerRef} className="min-h-screen bg-white overflow-hidden relative">
@@ -151,7 +152,7 @@ export default function AboutPage({ onNavigate }: { onNavigate?: (page: string) 
                                 <div className="flex items-center space-x-6 mb-8">
                                     <div className="relative">
                                         <Image
-                                            src="/images/vinsmokeSanji.jpeg"
+                                            src="portfolio/images/vinsmokeSanji.jpeg"
                                             alt="Kunwar Brijesh"
                                             width={120}
                                             height={120}

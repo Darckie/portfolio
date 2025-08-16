@@ -16,16 +16,16 @@ export default function Home() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <LandingPage onNavigate={handleNavigate} />
+        return <LandingPage />
       case 'about':
 
-        return <AboutPage onNavigate={handleNavigate} />
+        return <AboutPage  />
       case 'projects':
         return    <ProjectPage  />
       case 'contact':
-        return <ContactPage onNavigate={handleNavigate} />
+        return <ContactPage  />
       default:
-        return <LandingPage onNavigate={handleNavigate} />
+        return <LandingPage  />
     }
   }
 

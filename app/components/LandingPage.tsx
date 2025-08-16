@@ -1,18 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
+
+'use client'
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import { Hand } from 'lucide-react';
 
 
-export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page: string) => void }) {
+export default function LandingPage() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
     const [glitchActive, setGlitchActive] = useState(false);
     const [scrollY, setScrollY] = useState(0);
     const [currentTime, setCurrentTime] = useState('');
     const containerRef = useRef<HTMLDivElement>(null);
-
+ console.log(currentTime,scrollY)
     useEffect(() => {
         setIsLoaded(true);
+       
 
         // Update time every second
         const updateTime = () => {
@@ -59,7 +62,7 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
     }, []);
 
     // Update skills to match revised resume and user feedback
-    const skills = [
+    const skills = useMemo(() => [
         { name: 'REACT.JS', level: 90, color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
         { name: 'JAVASCRIPT', level: 90, color: 'from-yellow-400 to-yellow-500', icon: '📜' },
         { name: 'HTML5/CSS3', level: 90, color: 'from-orange-400 to-pink-500', icon: '🌐' },
@@ -76,36 +79,36 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
         { name: 'MYSQL', level: 50, color: 'from-blue-500 to-blue-700', icon: '🗄️' },
 
         { name: 'MONGODB', level: 40, color: 'from-green-500 to-teal-500', icon: '🍃' },
-    ];
+    ], []);
 
     // Update projects to match revised resume and user feedback
-    const projects = [
-        {
-            title: 'Maharashtra Cyber Complaints Portal',
-            description: 'A government-deployed complaint management system helping curb online fraud across Maharashtra. Real-time monitoring, advanced search, and data visualization dashboards.',
-            tech: ['React.js', 'Redux', 'Crypto.js', 'MySQL', 'Java', 'JWT'],
-            gradient: 'from-blue-500 via-cyan-500 to-teal-500',
-            status: 'LIVE',
-            year: '2023-Present'
-        },
-        {
-            title: 'ACEHELPLINE (Emergency Call Management)',
-            description: 'A modern emergency call management and dispatcher system for real-time incident tracking, call history, and ambulance dispatch. Features include tabbed navigation, call/incident history, and advanced search, built with React, MUI, and DataGrid.',
-            tech: ['React.js', 'MUI', 'Tailwind', 'TypeScript', 'Java', 'MySQL'],
-            gradient: 'from-purple-500 via-blue-500 to-cyan-500',
-            status: 'LIVE',
-            year: '2025-Present'
-        },
-        {
-            title: 'WhatsApp Business API-Based Messaging & Msg Portal',
-            description: 'Custom solution to automate customer engagement for small businesses. Real-time, two-way messaging, role-based access, dashboard, and automated responses.',
-            tech: ['Node.js', 'Express.js', 'React.js', 'Java'],
-            gradient: 'from-green-400 via-teal-400 to-blue-400',
-            status: 'LIVE',
-            year: '2023'
-        }
+    // const projects = useMemo(() => [
+    //     {
+    //         title: 'Maharashtra Cyber Complaints Portal',
+    //         description: 'A government-deployed complaint management system helping curb online fraud across Maharashtra. Real-time monitoring, advanced search, and data visualization dashboards.',
+    //         tech: ['React.js', 'Redux', 'Crypto.js', 'MySQL', 'Java', 'JWT'],
+    //         gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    //         status: 'LIVE',
+    //         year: '2023-Present'
+    //     },
+    //     {
+    //         title: 'ACEHELPLINE (Emergency Call Management)',
+    //         description: 'A modern emergency call management and dispatcher system for real-time incident tracking, call history, and ambulance dispatch. Features include tabbed navigation, call/incident history, and advanced search, built with React, MUI, and DataGrid.',
+    //         tech: ['React.js', 'MUI', 'Tailwind', 'TypeScript', 'Java', 'MySQL'],
+    //         gradient: 'from-purple-500 via-blue-500 to-cyan-500',
+    //         status: 'LIVE',
+    //         year: '2025-Present'
+    //     },
+    //     {
+    //         title: 'WhatsApp Business API-Based Messaging & Msg Portal',
+    //         description: 'Custom solution to automate customer engagement for small businesses. Real-time, two-way messaging, role-based access, dashboard, and automated responses.',
+    //         tech: ['Node.js', 'Express.js', 'React.js', 'Java'],
+    //         gradient: 'from-green-400 via-teal-400 to-blue-400',
+    //         status: 'LIVE',
+    //         year: '2023'
+    //     }
 
-    ];
+    // ], []);
 
     return (
         <div ref={containerRef} className="min-h-screen bg-white overflow-hidden relative">
@@ -276,7 +279,7 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                                     {/* Profile Image */}
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <Image
-                                            src="/images/sanji.jpg"
+                                            src="portfolio/images/sanji.jpg"
                                             alt="Kunwar Brijesh"
                                             width={306}
                                             height={306}
@@ -299,7 +302,7 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                             <div className="mt-16 text-center">
                                 <div className="inline-flex items-center space-x-3 px-6 py-3 bg-white/90 backdrop-blur-sm border border-amber-200 rounded-full shadow-lg">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-sm flex align-center font-medium text-amber-800">Hi I'm Brijesh !<Hand className="w-4 h-4 ml-2 text-amber-800" /></span>
+                                    <span className="text-sm flex align-center font-medium text-amber-800">Hi I&apos;m Brijesh !<Hand className="w-4 h-4 ml-2 text-amber-800" /></span>
                                 </div>
                             </div>
 
@@ -487,12 +490,12 @@ export default function CyberpunkPortfolio({ onNavigate }: { onNavigate?: (page:
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="text-center mb-10">
                         <h2 className="cyber-font text-3xl md:text-5xl font-black text-black mb-6">
-                            LETS <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">CONNECT</span>
+                            Let&apos;s connect <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">CONNECT</span>
                         </h2>
                         <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
                     </div>
                     <p className="tech-font text-2xl text-gray-700 mb-16 font-medium">
-                        Ready to build the future together? Let's create something extraordinary.
+                        Ready to build the future together? Let&apos;s create something extraordinary.
                     </p>
 
                     <div className="flex flex-row flex-wrap gap-4 justify-center items-center mt-8">
