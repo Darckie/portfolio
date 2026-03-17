@@ -10,7 +10,7 @@ html {
 
 /* Extra styles */
 body {
-  @apply bg-black text-terminal font-mono;
+  @apply bg-gray-50 text-gray-900 font-sans;
 }
 
 .blinking-cursor::after {

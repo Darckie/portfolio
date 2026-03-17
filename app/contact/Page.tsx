@@ -3,33 +3,20 @@ import { PhoneCallIcon } from 'lucide-react';
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen  text-white relative"
-
-    >
+    <main className="min-h-screen text-gray-900 relative">
       <style jsx>{`
-                @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono:wght@400&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
                 
                 .cyber-font {
-                  font-family: 'Orbitron', monospace;
+                  font-family: 'Poppins', sans-serif;
                 }
                 
                 .tech-font {
-                  font-family: 'Rajdhani', sans-serif;
+                  font-family: 'Inter', sans-serif;
                 }
                 
                 .mono-font {
-                  font-family: 'Share Tech Mono', monospace;
-                }
-                
-                .scan-lines {
-                  background: linear-gradient(transparent 50%, rgba(0, 255, 255, 0.03) 50%);
-                  background-size: 100% 4px;
-                  animation: scan 0.1s linear infinite;
-                }
-                
-                @keyframes scan {
-                  0% { background-position: 0 0; }
-                  100% { background-position: 0 4px; }
+                  font-family: 'Inter', sans-serif;
                 }
             `}</style>
 

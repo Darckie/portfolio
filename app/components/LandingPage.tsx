@@ -69,16 +69,13 @@ export default function LandingPage() {
         { name: 'REDUX', level: 70, color: 'from-purple-400 to-indigo-500', icon: '🔄' },
         { name: 'TAILWIND CSS', level: 70, color: 'from-teal-400 to-cyan-500', icon: '🎨' },
         { name: 'TYPESCRIPT', level: 60, color: 'from-blue-400 to-indigo-400', icon: '📘' },
-        { name: 'NEXT.JS', level: 40, color: 'from-gray-400 to-gray-600', icon: '▲' },
-        { name: 'React Native', level: 40, color: 'from-gray-400 to-teal-600', icon: '📱' },
+        { name: 'NEXT.JS', level: 78, color: 'from-gray-400 to-gray-600', icon: '▲' },
         // { name: 'MATERIAL-UI', level: 80, color: 'from-blue-400 to-indigo-500', icon: '🖌️' },
         { name: 'GIT & GITHUB', level: 85, color: 'from-gray-700 to-black', icon: '🔗' },
 
         { name: 'NODE.JS', level: 70, color: 'from-green-400 to-emerald-500', icon: '⚡' },
         { name: 'EXPRESS.JS', level: 75, color: 'from-gray-400 to-gray-600', icon: '🚀' },
         { name: 'MYSQL', level: 50, color: 'from-blue-500 to-blue-700', icon: '🗄️' },
-
-        { name: 'MONGODB', level: 40, color: 'from-green-500 to-teal-500', icon: '🍃' },
     ], []);
 
     // Update projects to match revised resume and user feedback

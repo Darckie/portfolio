@@ -7,7 +7,6 @@ import Interest from '../interest/InterestPanel'
 export default function AboutPage() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
-    // const [currentTime, setCurrentTime] = useState('');
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -15,6 +14,7 @@ export default function AboutPage() {
         const handleMouseMove = (e: MouseEvent) => {
             const rect = containerRef.current?.getBoundingClientRect();
             if (rect) {
+                console.log(mousePosition)
                 setMousePosition({
                     x: ((e.clientX - rect.left) / rect.width) * 100,
                     y: ((e.clientY - rect.top) / rect.height) * 100,
@@ -26,18 +26,26 @@ export default function AboutPage() {
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
-
         };
     }, []);
 
     // Real experience
     const experiences = useMemo(() => [
         {
-            year: '2023–Present',
+            year: 'Apr 2024–Present',
             title: 'Mid-Senior Frontend Developer',
             company: 'Technical Offerings & System Solutions Pvt Ltd. (TOSS)',
             description: 'Working as a mid-senior developer focused on creating and maintaining business applications. My main tasks include building interactive dashboards for data visualization, developing CRM systems for customer management, and creating user portals for different business needs. I work with React.js, Redux, and other modern frontend tools to build responsive and user-friendly interfaces. I also help with backend development using Node.js, Java, and MySQL when needed. I collaborate with team members to plan features, review code, and ensure high-quality deliverables.',
-            tech: ['React.js', 'Redux', 'Node.js', 'Java', 'Tailwind CSS', 'TypeScript', 'MySQL']
+            tech: ['React.js', 'Redux', 'Node.js', 'Java', 'Tailwind CSS', 'TypeScript', 'MySQL'],
+            type: 'full-time'
+        },
+        {
+            year: 'Oct 2023–Apr 2024',
+            title: 'Frontend Developer Intern',
+            company: 'Technical Offerings & System Solutions Pvt Ltd. (TOSS)',
+            description: 'Completed a 6-month internship where I worked on real-world frontend projects using React.js. Contributed to building UI components, integrating REST APIs, and collaborating with senior developers to deliver features on time. Gained hands-on experience with state management using Redux, responsive design with Tailwind CSS, and version control with Git. This internship laid the foundation for my transition into a full-time role at the same company.',
+            tech: ['React.js', 'Redux', 'Tailwind CSS', 'JavaScript', 'REST APIs', 'Git'],
+            type: 'internship'
         }
     ], []);
 
@@ -67,70 +75,31 @@ export default function AboutPage() {
         <div ref={containerRef} className="min-h-screen bg-white overflow-hidden relative">
             {/* Custom Fonts */}
             <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
         
         .cyber-font {
-          font-family: 'Orbitron', monospace;
+          font-family: 'Poppins', sans-serif;
         }
         
         .tech-font {
-          font-family: 'Rajdhani', sans-serif;
+          font-family: 'Inter', sans-serif;
         }
         
         .mono-font {
-          font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .neon-glow {
-          text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
-        }
-        
-        .scan-lines {
-          background: linear-gradient(transparent 50%, rgba(0, 255, 255, 0.03) 50%);
-          background-size: 100% 4px;
-          animation: scan 0.1s linear infinite;
-        }
-        
-        @keyframes scan {
-          0% { background-position: 0 0; }
-          100% { background-position: 0 4px; }
+          font-family: 'Inter', sans-serif;
         }
       `}</style>
 
-            {/* Dynamic Background */}
-            <div className="fixed inset-0 z-0">
+            {/* Subtle Background */}
+            <div className="fixed inset-0 z-0 opacity-40">
                 <div
-                    className="absolute inset-0 opacity-20 transition-all duration-1000"
+                    className="absolute inset-0"
                     style={{
-                        background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-              rgba(0, 255, 255, 0.3) 0%, 
-              rgba(255, 0, 255, 0.2) 25%, 
-              rgba(255, 255, 0, 0.1) 50%, 
-              rgba(255, 255, 255, 0.05) 100%)`
+                        backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
+                        backgroundSize: '40px 40px'
                     }}
                 />
-
-                {/* Circuit Board Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <svg width="100%" height="100%" className="absolute inset-0">
-                        <defs>
-                            <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                                <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="#00ffff" strokeWidth="0.5" opacity="0.3" />
-                                <circle cx="20" cy="20" r="2" fill="#ff00ff" opacity="0.5" />
-                                <circle cx="80" cy="80" r="2" fill="#ffff00" opacity="0.5" />
-                                <path d="M20,20 L80,20 L80,80" fill="none" stroke="#00ff00" strokeWidth="1" opacity="0.3" />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#circuit)" />
-                    </svg>
-                </div>
-
-                {/* Scan Lines */}
-                <div className="absolute inset-0 scan-lines opacity-30"></div>
             </div>
-
-            {/* Navigation */}
-
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-15 px-6">
@@ -169,7 +138,7 @@ export default function AboutPage() {
 
                                 <div className="space-y-4">
                                     <p className="tech-font text-gray-700 leading-relaxed">
-                                        Frontend Developer with 2 years of experience building scalable, dynamic applications using React.js. Specialized in creating optimized UI/UX, managing state, and integrating with backend services. I also have decent knowledge of backend development with Node.js, Express.js, and MySQL. Passionate about delivering clean, user-centric solutions and currently seeking frontend roles where I can contribute to impactful web applications.
+                                        Frontend Developer with 2 + years of experience building scalable, dynamic applications using React.js. Specialized in creating optimized UI/UX, managing state, and integrating with backend services. I also have decent knowledge of backend development with Node.js, Express.js, and MySQL. Passionate about delivering clean, user-centric solutions and currently seeking frontend roles where I can contribute to impactful web applications.
                                     </p>
                                     <p className="tech-font text-gray-700 leading-relaxed">
                                         Committed to writing clean, maintainable code and staying updated with the latest industry trends and best practices. Enthusiast of poetry, sketching, and fingerstyle guitar. Passionate about reading, kickboxing, and creative expression.
@@ -191,9 +160,6 @@ export default function AboutPage() {
                                         <div className="tech-font text-sm text-gray-600">Technologies</div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
 
@@ -204,7 +170,7 @@ export default function AboutPage() {
                                 {[
                                     { name: 'Frontend', skills: ['React.js', 'Next.js', 'JavaScript/TypeScript', 'Redux', 'Tailwind CSS', 'Material-UI', 'HTML5/CSS3'] },
                                     { name: 'Backend', skills: ['Node.js', 'Express.js', 'Java', 'Sequelize', 'JWT', 'Next.js'] },
-                                    { name: 'Database', skills: ['MySQL', 'MongoDB'] },
+                                    { name: 'Database', skills: ['MySQL'] },
                                     { name: 'Tools', skills: ['Git', 'GitHub', 'Postman'] }
                                 ].map((category) => (
                                     <div key={category.name} className="bg-white/60 backdrop-blur-sm border border-gray-200 p-4 rounded-lg hover:border-cyan-500/50 transition-all duration-300">
@@ -228,37 +194,60 @@ export default function AboutPage() {
                             Experience
                         </h2>
 
-                        <div className="space-y-8">
-                            {experiences.map((exp, index) => (
-                                <div key={index} className="relative  backdrop-blur-xl border-2 bg-gray-50 border-gray-100 p-8 rounded-lg  hover:border-cyan-200/50 transition-all duration-300">
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="cyber-font text-2xl font-bold text-black">{exp.title}</h3>
-                                            <p className="tech-font text-xl text-purple-500 font-semibold">{exp.company}</p>
+                        {/* Timeline container */}
+                        <div className="relative">
+                            {/* Vertical timeline line */}
+                            <div className="hidden md:block absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-purple-400 to-pink-400" />
+
+                            <div className="space-y-8">
+                                {experiences.map((exp, index) => (
+                                    <div key={index} className="relative md:pl-20">
+                                        {/* Timeline dot */}
+                                        <div className={`hidden md:flex absolute left-0 top-8 w-12 h-12 rounded-full items-center justify-center border-2 z-10 ${
+                                            exp.type === 'full-time'
+                                                ? 'bg-cyan-50 border-cyan-500'
+                                                : 'bg-purple-50 border-purple-400'
+                                        }`}>
+                                            <span className="text-lg">{exp.type === 'full-time' ? '💼' : '🚀'}</span>
                                         </div>
-                                        <div className="mono-font text-lg text-cyan-500 font-bold">{exp.year}</div>
-                                    </div>
 
-                                    <p className="tech-font text-gray-700 mb-4 leading-relaxed">{exp.description}</p>
+                                        {/* Card */}
+                                        <div className="relative backdrop-blur-xl border-2 bg-gray-50 border-gray-100 p-8 rounded-lg hover:border-cyan-200/50 transition-all duration-300">
+                                            <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                                                <div>
+                                                    <div className="flex items-center gap-3 mb-1">
+                                                        <h3 className="cyber-font text-2xl font-bold text-black">{exp.title}</h3>
+                                                        {/* Badge */}
+                                                        <span className={`inline-block mono-font text-xs font-semibold px-2.5 py-1 rounded-full border ${
+                                                            exp.type === 'full-time'
+                                                                ? 'bg-cyan-500/10 text-cyan-700 border-cyan-500/30'
+                                                                : 'bg-purple-500/10 text-purple-700 border-purple-400/30'
+                                                        }`}>
+                                                            {exp.type === 'full-time' ? 'Full-Time' : 'Internship · 6 mos'}
+                                                        </span>
+                                                    </div>
+                                                    <p className="tech-font text-xl text-purple-500 font-semibold">{exp.company}</p>
+                                                </div>
+                                                <div className="mono-font text-lg text-cyan-500 font-bold whitespace-nowrap">{exp.year}</div>
+                                            </div>
 
-                                    <div className="flex flex-wrap gap-2">
-                                        {exp.tech.map((tech) => (
-                                            <span key={tech} className="mono-font px-3 py-1 bg-cyan-500/10 text-cyan-700 text-sm font-medium border border-cyan-500/20 rounded">
-                                                {tech}
-                                            </span>
-                                        ))}
+                                            <p className="tech-font text-gray-700 mb-4 leading-relaxed">{exp.description}</p>
+
+                                            <div className="flex flex-wrap gap-2">
+                                                {exp.tech.map((tech) => (
+                                                    <span key={tech} className="mono-font px-3 py-1 bg-cyan-500/10 text-cyan-700 text-sm font-medium border border-cyan-500/20 rounded">
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </section>
 
                     {/* Education Section */}
-
-
-
-
-
                     <section className="mb-12">
                         <div className="max-w mx-auto">
                             <h2 className="cyber-font text-2xl font-bold text-black text-center mb-12">
@@ -269,41 +258,29 @@ export default function AboutPage() {
                                 {education.map((edu, index) => (
                                     <button
                                         key={index}
-
                                         className={`py-4 px-6 bg-pink-50 rounded-lg border-2 transition-all duration-200 hover:scale-105 text-left`}
-                              >
+                                    >
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="text-sm m-0">🎓</div>
-                                            <span className={`mono-font text-sm font-medium ${true ? 'text-gray-800' : 'text-purple-500'
-                                                }`}>
+                                            <span className={`mono-font text-sm font-medium ${true ? 'text-gray-800' : 'text-purple-500'}`}>
                                                 {edu.year}
                                             </span>
-                                            
                                         </div>
                                         <h3 className="system-font font-semibold text-md mb-3">{edu.degree}</h3>
-                                        <p className={`tech-font text-sm ${true ? 'text-gray-800' : 'text-purple-500'
-                                            }`}>
+                                        <p className={`tech-font text-sm ${true ? 'text-gray-800' : 'text-purple-500'}`}>
                                             {edu.institution} / <span className="font-bold text-blue-900">{edu.description}</span>
                                         </p>
-                                        
                                     </button>
                                 ))}
                             </div>
-
                         </div>
-
-
-
-
                     </section>
 
                     {/* Interests Section */}
                     <Interest />
 
-
-
                 </div>
             </section>
         </div>
     );
-} 
+}
