@@ -1,33 +1,28 @@
 
 import './globals.css';
-import { Space_Grotesk } from 'next/font/google';
+import { Bricolage_Grotesque, Fira_Code } from 'next/font/google';
 
-
-
-
-const spaceGrotesk = Space_Grotesk({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-bricolage',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  variable: '--font-fira',
 });
 
 export const metadata = {
   title: 'Kunwar Brijesh Portfolio',
-  description: 'Futuristic web developer portfolio',
+  description: 'Premium frontend developer portfolio for Kunwar Brijesh.',
 };
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
-
-
-
   return (
-    <html lang="en">
-      <body className={`${spaceGrotesk.variable} font-sans bg-white dark:bg-black text-black dark:text-white transition-colors`}>
-
-      
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${bricolage.variable} ${firaCode.variable} font-sans antialiased`}>
         {children}
-        {/* <Footer/> */}
       </body>
     </html>
   );
