@@ -1,6 +1,6 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import LandingPage from './components/LandingPage'
 import AboutPage from './components/AboutPage'
 import ContactPage from './contact/Page'
@@ -8,29 +8,9 @@ import Header from './components/Header'
 import ProjectPage from './projects/page'
 
 type PageKey = 'home' | 'about' | 'projects' | 'contact'
-type ThemeMode = 'dark' | 'light'
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState<PageKey>('home')
-  const [theme, setTheme] = useState<ThemeMode>('dark')
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem('portfolio-theme')
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initialTheme =
-      storedTheme === 'light' || storedTheme === 'dark'
-        ? storedTheme
-        : systemPrefersDark
-          ? 'dark'
-          : 'light'
-
-    setTheme(initialTheme)
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    window.localStorage.setItem('portfolio-theme', theme)
-  }, [theme])
 
   const handleNavigate = (page: PageKey) => {
     setCurrentPage(page)
@@ -57,8 +37,6 @@ export default function Home() {
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
-        onToggleTheme={() => setTheme((value) => (value === 'dark' ? 'light' : 'dark'))}
-        theme={theme}
       />
       <AnimatePresence mode="wait">
         <motion.main

@@ -2,8 +2,6 @@
 
 import { motion } from 'framer-motion'
 import {
-  Moon,
-  SunMedium,
   Home,
   User,
   FolderKanban,
@@ -13,13 +11,10 @@ import {
 import { useEffect, useState } from 'react'
 
 type PageKey = 'home' | 'about' | 'projects' | 'contact'
-type ThemeMode = 'dark' | 'light'
 
 interface HeaderProps {
   currentPage: PageKey
   onNavigate?: (page: PageKey) => void
-  onToggleTheme?: () => void
-  theme: ThemeMode
 }
 
 const items: { label: string; value: PageKey; icon: React.ReactNode }[] = [
@@ -32,8 +27,6 @@ const items: { label: string; value: PageKey; icon: React.ReactNode }[] = [
 export default function Header({
   currentPage,
   onNavigate,
-  onToggleTheme,
-  theme,
 }: HeaderProps) {
   const [currentTime, setCurrentTime] = useState('')
   const [scrolled, setScrolled] = useState(false)
@@ -116,7 +109,7 @@ export default function Header({
           transition: border-color .15s;
         }
         .header-logo-btn:hover .header-logo-mark {
-          border-color: var(--accent);
+          border-color: #14b8a6;
         }
 
         /* Nav items */
@@ -140,9 +133,9 @@ export default function Header({
           background: var(--surface-muted);
         }
         .nav-item.active {
-          color: var(--accent);
-          background: var(--accent-soft);
-          border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+          color: #14b8a6;
+          background: rgba(20, 184, 166, 0.08);
+          border-color: rgba(20, 184, 166, 0.3);
         }
 
         /* Status badge */
@@ -190,9 +183,9 @@ export default function Header({
           flex-shrink: 0;
         }
         .theme-toggle:hover {
-          border-color: var(--accent);
-          color: var(--accent);
-          background: var(--accent-soft);
+          border-color: #14b8a6;
+          color: #14b8a6;
+          background: rgba(20, 184, 166, 0.08);
         }
 
         /* Mobile nav strip */
@@ -266,18 +259,7 @@ export default function Header({
                   {currentTime}
                 </div>
 
-                {/* Theme toggle */}
-                <button
-                  type="button"
-                  onClick={onToggleTheme}
-                  className="theme-toggle"
-                  aria-label="Toggle theme"
-                >
-                  {theme === 'dark'
-                    ? <SunMedium size={15} />
-                    : <Moon size={15} />
-                  }
-                </button>
+
               </div>
             </div>
 

@@ -4,40 +4,29 @@
 
 :root {
   color-scheme: light;
-  --bg: #f6f6f4;
-  --bg-elevated: #efefec;
-  --surface: rgba(255, 255, 255, 0.88);
+  /* Soft warm background palette */
+  --bg: #faf8f5;
+  --bg-elevated: #f5f3f0;
+  /* Premium white surfaces */
+  --surface: rgba(255, 255, 255, 0.92);
   --surface-strong: #ffffff;
-  --surface-muted: rgba(245, 245, 244, 0.92);
-  --border: rgba(24, 24, 27, 0.08);
-  --border-strong: rgba(24, 24, 27, 0.14);
-  --text: #0f1115;
-  --text-muted: #5f636d;
-  --text-soft: #8a909c;
-  --accent: #0f766e;
-  --accent-soft: rgba(15, 118, 110, 0.08);
-  --shadow-soft: 0 18px 44px rgba(15, 23, 42, 0.08);
-  --shadow-strong: 0 28px 80px rgba(15, 23, 42, 0.12);
-  --hairline: rgba(255, 255, 255, 0.7);
-}
-
-html.dark {
-  color-scheme: dark;
-  --bg: #080808;
-  --bg-elevated: #101012;
-  --surface: rgba(16, 17, 19, 0.9);
-  --surface-strong: #111113;
-  --surface-muted: rgba(24, 24, 27, 0.92);
-  --border: rgba(244, 244, 245, 0.08);
-  --border-strong: rgba(244, 244, 245, 0.16);
-  --text: #fafafa;
-  --text-muted: #a1a1aa;
-  --text-soft: #71717a;
-  --accent: #5eead4;
-  --accent-soft: rgba(94, 234, 212, 0.12);
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.34);
-  --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.5);
-  --hairline: rgba(255, 255, 255, 0.06);
+  --surface-muted: rgba(245, 243, 240, 0.95);
+  /* Soft borders */
+  --border: rgba(99, 99, 99, 0.06);
+  --border-strong: rgba(99, 99, 99, 0.12);
+  /* Text hierarchy */
+  --text: #1a1a1a;
+  --text-muted: #666666;
+  --text-soft: #999999;
+  /* Teal accent with secondary tones */
+  --accent: #14b8a6;
+  --accent-soft: rgba(20, 184, 166, 0.08);
+  --accent-warm: #f97316;
+  --accent-warm-soft: rgba(249, 115, 22, 0.08);
+  /* Soft shadows */
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.06);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --hairline: rgba(255, 255, 255, 0.6);
 }
 
 html {
@@ -47,9 +36,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, var(--accent-soft), transparent 34%),
-    radial-gradient(circle at top right, rgba(113, 113, 122, 0.08), transparent 28%),
-    var(--bg);
+    radial-gradient(circle at 120% -10%, rgba(20, 184, 166, 0.06), transparent 40%),
+    radial-gradient(circle at -20% 80%, rgba(249, 115, 22, 0.04), transparent 45%),
+    linear-gradient(to bottom, var(--bg) 0%, #fcfbf9 100%);
   color: var(--text);
   font-family: var(--font-bricolage), sans-serif;
   -webkit-font-smoothing: antialiased;

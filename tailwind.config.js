@@ -1,5 +1,4 @@
 module.exports = {
-  darkMode: 'class',
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,17 +8,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        terminal: '#00FF41',
-        bgDark: '#0f0f0f',
+        /* Premium light theme */
         cream: {
-          100: '#fdf6ee',
-          200: '#f7e9d7',
+          50: '#faf8f5',
+          100: '#f5f3f0',
+        },
+        /* Teal accent palette */
+        teal: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#6ee7b7',
+          400: '#14b8a6',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
         },
       },
       fontFamily: {
-        mono: ['Fira Code', 'monospace'],
+        mono: ['var(--font-fira)', 'monospace'],
         serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['var(--font-bricolage)', 'sans-serif'],
+      },
+      boxShadow: {
+        soft: '0 12px 32px rgba(0, 0, 0, 0.06)',
+        strong: '0 20px 60px rgba(0, 0, 0, 0.08)',
       },
     },
   },
