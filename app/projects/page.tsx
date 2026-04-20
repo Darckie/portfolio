@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  ArrowUpRight,
   Download,
   ExternalLink,
   Calendar,
@@ -51,17 +50,17 @@ interface Project {
 const BASE_PATH = '/portfolio'
 
 const tabItems: { label: string; value: ProjectTab; icon: React.ReactNode }[] = [
-  { label: 'Overview',   value: 'overview',   icon: <Layers size={12} /> },
-  { label: 'Learnings',  value: 'learnings',  icon: <Lightbulb size={12} /> },
+  { label: 'Overview', value: 'overview', icon: <Layers size={12} /> },
+  { label: 'Learnings', value: 'learnings', icon: <Lightbulb size={12} /> },
   { label: 'Challenges', value: 'challenges', icon: <ShieldAlert size={12} /> },
-  { label: 'Outcomes',   value: 'outcomes',   icon: <TrendingUp size={12} /> },
+  { label: 'Outcomes', value: 'outcomes', icon: <TrendingUp size={12} /> },
 ]
 
 const tabBulletIcon: Record<ProjectTab, React.ReactNode> = {
-  overview:   <Layers size={13} />,
-  learnings:  <Lightbulb size={13} />,
+  overview: <Layers size={13} />,
+  learnings: <Lightbulb size={13} />,
   challenges: <ShieldAlert size={13} />,
-  outcomes:   <CheckCircle2 size={13} />,
+  outcomes: <CheckCircle2 size={13} />,
 }
 
 export default function ProjectSection() {
@@ -74,10 +73,12 @@ export default function ProjectSection() {
         title: 'Mortgage Auction Platform',
         status: 'In Progress',
         completion: 78,
-        year: '2024 – Present',
+        year: '2025 – Present',
         client: 'Nadlan Capital Group',
         clientUrl: 'https://nadlancapitalgroup.com/',
         projectUrl: 'https://nandalanfinance.netlify.app/',
+
+
         tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'React Table', 'React Hook Form', 'Zod', 'NextAuth', 'Zustand', 'React Query', 'Shadcn UI'],
         description: 'A full-stack application for agents, lenders, brokers, and borrowers to manage real-estate loan auctions with rich filtering, role-based access, and structured workflows.',
         myRole: 'Frontend Developer',
@@ -102,12 +103,13 @@ export default function ProjectSection() {
       {
         title: 'WhatsApp Chat Web App',
         status: 'Live',
-        year: '2023 – 2024',
+        year: '2026',
         tech: ['Node.js', 'Express.js', 'React.js', 'TypeScript', 'MySQL', 'JWT', 'WebSockets'],
         description: 'A secure chat management portal that lets agents receive, reply to, and monitor WhatsApp conversations from a unified web interface.',
         myRole: 'Full-Stack Developer',
         duration: '4 months',
         images: [whatsappScreenshot1],
+        projectUrl: ' https://darckibeta0007.netlify.app/',
         documents: [{ label: 'WhatsApp Chat Web App Architecture & API Doc', href: `${BASE_PATH}/whatsapp_chat_doc.pdf` }],
         learnings: [
           'Webhook-driven chat architecture and reliable event handling.',
@@ -127,12 +129,12 @@ export default function ProjectSection() {
       },
       {
         title: 'Clixxo Gateway Management Server',
-        status: 'In Progress',
-        year: '2025 – Present',
+        status: 'Live',
+        year: '2025',
         tech: ['Node.js', 'Express.js', 'Sequelize', 'MySQL', 'JWT', 'Winston', 'Linux'],
         description: 'A backend platform for network gateway devices covering authentication, diagnostics, system management, and operational reliability.',
         myRole: 'Backend Developer',
-        duration: '3 months – Present',
+        duration: '3 months',
         learnings: [
           'Secure API design for system-level operations.',
           'Middleware architecture for auth and access control.',
@@ -152,11 +154,11 @@ export default function ProjectSection() {
       {
         title: 'Maharashtra Cyber Complaints Portal',
         status: 'Live',
-        year: '2023 – Present',
+        year: '2023 – 2024',
         tech: ['React.js', 'Redux', 'Crypto.js', 'MySQL', 'Java', 'JWT'],
         description: 'A government complaint management system for monitoring cyber fraud reports with dashboards, search tools, and operational visibility.',
         myRole: 'Frontend Lead Developer',
-        duration: 'Ongoing',
+        duration: '8 months',
         learnings: [
           'Large-scale React architecture for admin-heavy systems.',
           'Data visualization design for operational monitoring.',
@@ -176,7 +178,7 @@ export default function ProjectSection() {
       {
         title: 'ACEHELPLINE Emergency Call Management',
         status: 'Live',
-        year: '2025 – Present',
+        year: '2025',
         tech: ['React.js', 'MUI', 'Tailwind', 'TypeScript', 'Java', 'MySQL'],
         description: 'An emergency call management and dispatcher interface for tracking incidents, operator workflows, and real-time information handling.',
         myRole: 'Frontend Lead Developer',
@@ -204,10 +206,10 @@ export default function ProjectSection() {
   const project = projects[selectedProject]
 
   const tabContent: Record<ProjectTab, string[]> = {
-    overview:   [],
-    learnings:  project.learnings,
+    overview: [],
+    learnings: project.learnings,
     challenges: project.challenges,
-    outcomes:   project.outcomes,
+    outcomes: project.outcomes,
   }
 
   return (
@@ -557,9 +559,9 @@ export default function ProjectSection() {
             {/* Meta row */}
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {[
-                { label: 'Role',     value: project.myRole,   icon: <User size={13} /> },
+                { label: 'Role', value: project.myRole, icon: <User size={13} /> },
                 { label: 'Duration', value: project.duration, icon: <Clock size={13} /> },
-                { label: 'Status',   value: project.status,   icon: <CircleDot size={13} /> },
+                { label: 'Status', value: project.status, icon: <CircleDot size={13} /> },
               ].map((item) => (
                 <div key={item.label} className="meta-cell">
                   <div className="meta-cell-icon">{item.icon}</div>

@@ -24,14 +24,14 @@ const BASE_PATH = '/portfolio'
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.5, delay, ease: 'easeOut' as const },
 })
 
 const fadeUpInView = {
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.15 },
-  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.5, ease: 'easeOut' as const },
 }
 
 const experiences = [
@@ -277,7 +277,7 @@ export default function AboutPage() {
 
         {/* ── HERO GRID ── */}
         <motion.div
-        //   {...fadeUp(0)}
+          {...fadeUp(0)}
           className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]"
         >
           {/* Left — Bio */}

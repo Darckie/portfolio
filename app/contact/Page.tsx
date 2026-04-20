@@ -236,7 +236,7 @@ export default function ContactPage() {
           <div className="section-kicker mb-4">Contact</div>
           <div className="flex flex-col gap-3 border-b border-[var(--border)] pb-7 sm:flex-row sm:items-end sm:justify-between">
             <h1 className="section-title text-[clamp(2.4rem,5vw,4rem)]">
-              <span className="text-yellow-500">Let's</span> ship something sharp.
+              <span className="text-yellow-500">Let&apos;s</span> ship something sharp.
             </h1>
             <div className="flex items-center gap-3 flex-shrink-0">
               <div className="location-badge">
@@ -258,7 +258,7 @@ export default function ContactPage() {
 
             <div>
               <p className="section-copy leading-relaxed">
-                I'm open to frontend-focused roles, product teams that care about
+                I&apos;m open to frontend-focused roles, product teams that care about
                 quality, and thoughtful conversations around modern React development.
                 I reply within 24 hours.
               </p>
@@ -293,7 +293,7 @@ export default function ContactPage() {
             <div className="border-t border-[var(--border)] pt-6">
               <div className="flex items-center gap-2 mb-3">
                 <CheckCircle2 size={13} className="text-[var(--accent)]" />
-                <span className="mono-label text-[10px]">What I'm looking for</span>
+                <span className="mono-label text-[10px]">What I&apos;m looking for</span>
               </div>
               <div>
                 {preferencePoints.map((point) => (

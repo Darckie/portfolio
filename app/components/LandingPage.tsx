@@ -23,26 +23,44 @@ import Image from 'next/image'
 const BASE_PATH = '/portfolio'
 
 const featuredProjects = [
+
+
+
   {
-    title: 'Makino Auto Mobile Portfolio',
-    year: '2025',
+    title: 'Whataspp Generic solution',
+    year: '2026',
     status: 'Live',
-    url: 'https://darckie.github.io/makino-modern/',
-    description: 'Automotive brand portfolio with smooth scroll and interactive gallery.',
+    url: 'https://darckibeta0007.netlify.app/',
+    description: 'WhatsApp conversations from a unified web interface & role-based Admin dashboards.',
   },
   {
+    title: 'Napkin Haven E-commerce UI - personal project',
+    year: '2026',
+    status: 'IN PROGRESS',
+    url: 'https://napkin-haven-shop.lovable.app/',
+    description: 'Modern e-commerce UI for a fictional stationery store.',
+  },
+
+  {
     title: 'Mortgage Auction Platform',
-    year: '2024',
+    year: '2025',
     status: 'In progress',
     url: 'https://nandalanfinance.netlify.app/',
     description: 'Finance platform for real-time mortgage auction listings.',
   },
   {
     title: 'Maharashtra Cyber Portal',
-    year: '2023',
+    year: '2024',
     status: 'Live',
     url: 'https://darckie.github.io/ComplaintPortal/',
     description: 'Government UAT portal for cyber complaint management.',
+  },
+  {
+    title: 'Makino Auto Mobile Portfolio',
+    year: '2025',
+    status: 'Live',
+    url: 'https://darckie.github.io/makino-modern/',
+    description: 'Automotive brand portfolio with smooth scroll and interactive gallery.',
   },
   {
     title: 'Anchorcomply',
@@ -87,19 +105,45 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
   return (
     <div className="page-shell">
       <style>{`
+        /* ── Base reset for mobile ── */
+        *, *::before, *::after { box-sizing: border-box; }
+
         /* ── Hero layout ── */
         .hero-grid {
           display: grid;
-          gap: 24px;
+          gap: 32px;
           padding: 0;
-          padding-bottom: 56px;
-          padding-top: 112px;
+          padding-bottom: 48px;
+          padding-top: 80px;
+          /* Single column on mobile */
+          grid-template-columns: 1fr;
         }
-        @media(min-width:768px){
+        @media (min-width: 768px) {
           .hero-grid {
-            grid-template-columns: minmax(0,1.2fr) 310px;
+            grid-template-columns: minmax(0, 1.2fr) 310px;
             padding-top: 128px;
+            padding-bottom: 56px;
             gap: 36px;
+          }
+        }
+
+        /* ── Section shell ── */
+        .section-shell {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        @media (min-width: 640px) {
+          .section-shell {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .section-shell {
+            padding-left: 40px;
+            padding-right: 40px;
           }
         }
 
@@ -118,14 +162,43 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           color: var(--text-muted);
           background: var(--surface-muted);
           margin-bottom: 20px;
+          /* Prevent overflow on very small screens */
+          max-width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .status-badge .live-dot {
-          width: 6px; height: 6px;
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
           background: #22c55e;
           animation: blink 2s ease-in-out infinite;
+          flex-shrink: 0;
         }
-        @keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+
+        /* ── Hero title ── */
+        .section-title {
+          font-size: clamp(26px, 6vw, 52px);
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          color: var(--text);
+        }
+        .section-kicker {
+          font-family: monospace;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--text-muted);
+        }
+        .section-copy {
+          color: var(--text-muted);
+        }
 
         /* ── Buttons ── */
         .btn-primary {
@@ -141,8 +214,9 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           border-radius: 8px;
           cursor: pointer;
           transition: opacity .18s, transform .15s;
+          white-space: nowrap;
         }
-        .btn-primary:hover { opacity:.82; transform:translateY(-1px); }
+        .btn-primary:hover { opacity: .82; transform: translateY(-1px); }
 
         .btn-ghost {
           display: inline-flex;
@@ -158,8 +232,25 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           cursor: pointer;
           text-decoration: none;
           transition: border-color .18s, color .18s, transform .15s;
+          white-space: nowrap;
         }
-        .btn-ghost:hover { border-color: var(--border-strong); color: var(--text); transform:translateY(-1px); }
+        .btn-ghost:hover { border-color: var(--border-strong); color: var(--text); transform: translateY(-1px); }
+
+        /* Button row wraps on tiny screens */
+        .hero-btn-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 28px;
+        }
+        /* Full-width buttons on very small screens */
+        @media (max-width: 380px) {
+          .btn-primary,
+          .btn-ghost {
+            width: 100%;
+            justify-content: center;
+          }
+        }
 
         .btn-small {
           display: inline-flex;
@@ -175,6 +266,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           cursor: pointer;
           text-decoration: none;
           transition: border-color .18s, color .18s;
+          white-space: nowrap;
         }
         .btn-small:hover { border-color: var(--border-strong); color: var(--text); }
 
@@ -194,8 +286,8 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           animation: marquee-scroll 24s linear infinite;
         }
         @keyframes marquee-scroll {
-          0%   { transform:translateX(0); }
-          100% { transform:translateX(-50%); }
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         .chip-item {
           display: inline-flex;
@@ -221,8 +313,14 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         }
         .profile-img-wrap {
           position: relative;
-          aspect-ratio: 4/5;
+          /* On mobile, use a shorter aspect ratio so it doesn't dominate the viewport */
+          aspect-ratio: 16/9;
           background: var(--surface-muted);
+        }
+        @media (min-width: 768px) {
+          .profile-img-wrap {
+            aspect-ratio: 4/5;
+          }
         }
         .profile-img-overlay {
           position: absolute;
@@ -231,10 +329,14 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         }
         .profile-img-caption {
           position: absolute;
-          bottom: 0; left: 0; right: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
           padding: 14px 16px;
           color: #fff;
         }
+
+        /* ── Stats row ── */
         .stat-mini {
           border: 1px solid var(--border);
           background: var(--surface);
@@ -243,15 +345,23 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           transition: border-color .18s;
         }
         .stat-mini:hover { border-color: var(--border-strong); }
+        .mono-label {
+          font-family: monospace;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          color: var(--text-muted);
+        }
 
         /* ── Work section ── */
         .work-panel {
           border: 1px solid var(--border);
           background: var(--surface);
           border-radius: 12px;
-          padding: 22px;
+          padding: 16px;
         }
-        @media(min-width:640px){ .work-panel { padding: 26px; } }
+        @media (min-width: 640px) {
+          .work-panel { padding: 26px; }
+        }
 
         .work-header {
           display: flex;
@@ -261,16 +371,20 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           padding-bottom: 18px;
           margin-bottom: 4px;
         }
-        @media(min-width:540px){
-          .work-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+        @media (min-width: 540px) {
+          .work-header {
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+          }
         }
 
         /* ── Project rows ── */
         .proj-row {
           display: flex;
           align-items: flex-start;
-          gap: 14px;
-          padding: 18px 0;
+          gap: 10px;
+          padding: 16px 0;
           border-bottom: 1px solid var(--border);
           text-decoration: none;
           cursor: pointer;
@@ -281,10 +395,10 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         .proj-row:hover {
           background: var(--surface-muted);
           margin: 0 -10px;
-          padding: 18px 10px;
+          padding: 16px 10px;
         }
         .proj-row:hover .proj-title { color: var(--accent); }
-        .proj-row:hover .proj-arrow { color: var(--text); transform: translate(2px,-2px); }
+        .proj-row:hover .proj-arrow { color: var(--text); transform: translate(2px, -2px); }
 
         .proj-idx {
           font-family: monospace;
@@ -296,23 +410,30 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         }
         .proj-main { flex: 1; min-width: 0; }
         .proj-title {
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 600;
           color: var(--text);
           margin-bottom: 4px;
           letter-spacing: -0.15px;
           transition: color .15s;
+          /* Prevent overflow */
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+        @media (min-width: 480px) {
+          .proj-title { font-size: 14px; }
         }
         .proj-desc {
           font-size: 12px;
           color: var(--text-muted);
           line-height: 1.55;
           margin-bottom: 8px;
+          overflow-wrap: break-word;
         }
         .proj-footer {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
           flex-wrap: wrap;
         }
         .proj-year {
@@ -322,6 +443,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           font-family: monospace;
           font-size: 10px;
           color: var(--text-muted);
+          white-space: nowrap;
         }
         .proj-status {
           display: inline-flex;
@@ -333,6 +455,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           text-transform: uppercase;
           padding: 2px 7px;
           border-radius: 999px;
+          white-space: nowrap;
         }
         .proj-status.live {
           color: #22c55e;
@@ -351,16 +474,29 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           font-family: monospace;
           font-size: 10px;
           color: var(--text-muted);
-          max-width: 180px;
+          /* Shrink URL on mobile so it doesn't overflow */
+          max-width: min(180px, calc(100vw - 120px));
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        /* Hide URL on very small screens to avoid clutter */
+        @media (max-width: 380px) {
+          .proj-url { display: none; }
         }
         .proj-arrow {
           color: var(--text-muted);
           flex-shrink: 0;
           margin-top: 2px;
           transition: color .15s, transform .15s;
+        }
+
+        /* ── Section bottom padding ── */
+        .pb-section {
+          padding-bottom: 48px;
+        }
+        @media (min-width: 640px) {
+          .pb-section { padding-bottom: 80px; }
         }
       `}</style>
 
@@ -391,7 +527,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             experiences, and production-ready systems that stay clean as they scale.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="hero-btn-row">
             <button
               type="button"
               onClick={() => onNavigate?.('projects')}
@@ -427,7 +563,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           </div>
         </motion.div>
 
-        {/* Right col */}
+        {/* Right col — profile card + stats */}
         <motion.div {...fadeUp(0.1)} className="flex flex-col gap-3">
           <div className="profile-card">
             <div className="profile-img-wrap">
@@ -466,9 +602,12 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               <div key={item.label} className="stat-mini">
                 <div
                   style={{
-                    fontSize: 24, fontWeight: 700,
-                    color: 'var(--text)', letterSpacing: '-0.5px',
-                    lineHeight: 1, marginBottom: 6,
+                    fontSize: 24,
+                    fontWeight: 700,
+                    color: 'var(--text)',
+                    letterSpacing: '-0.5px',
+                    lineHeight: 1,
+                    marginBottom: 6,
                   }}
                 >
                   {item.value}
@@ -483,7 +622,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       {/* ── SELECTED WORK ── */}
       <motion.section
         {...fadeUpView}
-        className="section-shell pb-16 sm:pb-20"
+        className="section-shell pb-section"
       >
         <div className="work-panel">
           <div className="work-header">
@@ -491,7 +630,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
               <div className="section-kicker mb-3">Selected work</div>
               <h2
                 style={{
-                  fontSize: 'clamp(22px, 3vw, 28px)',
+                  fontSize: 'clamp(20px, 3vw, 28px)',
                   fontWeight: 700,
                   letterSpacing: '-0.04em',
                   color: 'var(--text)',
