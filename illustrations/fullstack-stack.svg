@@ -1,0 +1,113 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+  <linearGradient id="ui" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#008F84"/>
+    <stop offset="100%" stop-color="#00B8A9"/>
+  </linearGradient>
+
+  <linearGradient id="logic" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#74E3DA"/>
+    <stop offset="100%" stop-color="#A7EFE7"/>
+  </linearGradient>
+
+  <linearGradient id="backend" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#9FC5F8"/>
+    <stop offset="100%" stop-color="#B7D4FF"/>
+  </linearGradient>
+
+  <linearGradient id="redis" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#F7B2B2"/>
+    <stop offset="100%" stop-color="#FFD2D2"/>
+  </linearGradient>
+
+  <linearGradient id="db" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#C7B5FF"/>
+    <stop offset="100%" stop-color="#DDD2FF"/>
+  </linearGradient>
+
+  <filter id="shadow">
+    <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.08"/>
+  </filter>
+</defs>
+
+<rect width="1200" height="900" fill="#F7F7F7"/>
+
+<circle cx="600" cy="450" r="360" fill="#DFF5F1"/>
+
+<line x1="600" y1="120" x2="600" y2="720"
+      stroke="#7AD9CF"
+      stroke-width="4"
+      stroke-dasharray="10 10"/>
+
+<!-- FE -->
+<circle cx="120" cy="120" r="48" fill="white" stroke="#22D3C5" stroke-width="5"/>
+<text x="120" y="133" text-anchor="middle"
+      font-size="28" font-family="Arial" font-weight="700" fill="#0F766E">FE</text>
+
+<!-- DB -->
+<circle cx="1080" cy="740" r="48" fill="white" stroke="#9B7BFF" stroke-width="5"/>
+<text x="1080" y="753" text-anchor="middle"
+      font-size="28" font-family="Arial" font-weight="700" fill="#5B3FD6">DB</text>
+
+<!-- UI -->
+<g filter="url(#shadow)">
+<rect x="280" y="90" width="640" height="90" rx="28" fill="url(#ui)"/>
+</g>
+
+<text x="600" y="145" text-anchor="middle"
+      font-size="34" font-family="Arial" font-weight="700" fill="white">
+UI Layer
+</text>
+
+<!-- State -->
+<g filter="url(#shadow)">
+<rect x="280" y="240" width="640" height="90" rx="28" fill="url(#logic)"/>
+</g>
+
+<text x="600" y="295" text-anchor="middle"
+      font-size="32" font-family="Arial" font-weight="700" fill="#134E4A">
+State / Logic
+</text>
+
+<!-- API -->
+<g filter="url(#shadow)">
+<rect x="280" y="390" width="640" height="90" rx="28" fill="#D8F5F0"/>
+</g>
+
+<text x="600" y="445" text-anchor="middle"
+      font-size="32" font-family="Arial" font-weight="700" fill="#111827">
+REST API
+</text>
+
+<!-- Backend -->
+<g filter="url(#shadow)">
+<rect x="280" y="540" width="640" height="90" rx="28" fill="url(#backend)"/>
+</g>
+
+<text x="600" y="595" text-anchor="middle"
+      font-size="32" font-family="Arial" font-weight="700" fill="#111827">
+Backend
+</text>
+
+<!-- Redis -->
+<g filter="url(#shadow)">
+<rect x="280" y="690" width="640" height="90" rx="28" fill="url(#redis)"/>
+</g>
+
+<text x="600" y="745" text-anchor="middle"
+      font-size="32" font-family="Arial" font-weight="700" fill="#111827">
+Redis (Cache)
+</text>
+
+<!-- Database -->
+<g filter="url(#shadow)">
+<rect x="280" y="840" width="640" height="90" rx="28" fill="url(#db)"/>
+</g>
+
+<text x="600" y="895" text-anchor="middle"
+      font-size="32" font-family="Arial" font-weight="700" fill="#111827">
+Database
+</text>
+
+</svg>
